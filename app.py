@@ -9,9 +9,9 @@ from sklearn.externals import joblib
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'csv'}
 
-SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
-SECRET_KEY = os.environ.get('SECRET_KEY')
-SQLALCHEMY_TRACK_MODIFICATIONS =False
+# SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+# SQLALCHEMY_TRACK_MODIFICATIONS =False
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -35,13 +35,13 @@ def upload():
         return "Unsuccessful"
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        file.save(os.path.join('', filename))
         return predict(filename)
     
     return "Unsuccessful"
 
 def predict(filename):
-    path = 'uploads/'+filename
+    path = filename
     trans_df = pd.read_csv(path)
     original = trans_df
     trans_df = trans_df.drop(['nameOrig','nameDest'],1)
@@ -55,6 +55,7 @@ def predict(filename):
     original['isFraud'] = pd.DataFrame(data=predictions,columns=['isFraud'])
     fraud = original[original['isFraud']==1]
     fraud.to_csv('predict_files/fraud.csv',index=False)
+    os.remove(path)
     return send_file('predict_files/fraud.csv',as_attachment=True)
 
 @app.route('/train',methods=['POST'])
