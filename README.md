@@ -1,7 +1,8 @@
 # Fraud-Detection
 An efficient and automated way to detect fraud in online transactions
 
-### Demo: <a href="https://fraud-detection-demo.herokuapp.com/">Website</a>
+### Demo: 
+a href="https://fraud-detection-demo.herokuapp.com/">Website</a>
 
 ### The input parameters for the prediction phase should be of this format:
 
