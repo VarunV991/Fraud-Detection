@@ -1,0 +1,23 @@
+<html>
+   <body>
+      <center>
+         <div style="border: 1px solid black;width: 50%;height: 90%;background-color:lightgoldenrodyellow">
+         <div><h1>Fraud Detection Model</h1></div>
+            <div style="border: 1px solid black;width: 50%;margin-bottom: 10%;padding: 20px;background-color: white;">
+               <div><h3>Get Prediciton</h3></div>
+               <form action = "http://localhost:5000/predict" method = "POST" enctype="multipart/form-data">
+                  <div style="margin-bottom: 20px;"><input type = "file" name = "file" /></div>
+                  <input type = "submit"/>
+               </form> 
+            </div>
+            <div style="border: 1px solid black;width: 50%;padding: 20px;background-color: white;">
+               <div><h3>Train the model</h3></div>
+               <form action = "http://localhost:5000/train" method = "POST" enctype="multipart/form-data">
+                  <div style="margin-bottom: 20px;"><input type = "file" name = "file" /></div>
+                  <input type = "submit"/>
+               </form> 
+            </div>
+         </div>  
+      </center>
+   </body>
+</html>
